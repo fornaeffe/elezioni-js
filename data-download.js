@@ -9,10 +9,10 @@ import { finished } from 'stream/promises';
 
 console.log("Starting data download...")
 
-if (!existsSync("public/data")) await mkdir("public/data");
+if (!existsSync("downloads")) await mkdir("downloads");
 
 const downloadFile = (async (url, fileName) => {
-    const destination = resolve("./public/data", fileName);
+    const destination = resolve("downloads", fileName);
     const fileStream = createWriteStream(destination);
     try {
         const res = await fetch(url);
