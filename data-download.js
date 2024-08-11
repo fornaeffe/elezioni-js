@@ -1,4 +1,6 @@
+// @ts-check
 // From https://stackoverflow.com/questions/37614649/how-can-i-download-and-save-a-file-using-the-fetch-api-node-js
+
 
 import { resolve } from 'path';
 import { existsSync, createWriteStream, unlink } from 'fs';
@@ -17,10 +19,11 @@ const downloadFile = (async (url, fileName) => {
     try {
         const res = await fetch(url);
         
-        if (!res.ok) {
-            throw new Error(`Download error: ${response.statusText}`);
+        if (!res.ok || !res.body) {
+            throw new Error(`Download error: ${res.statusText}`);
         }
 
+        // @ts-ignore
         await finished(Readable.fromWeb(res.body).pipe(fileStream));
         
         console.log("Downloaded " + fileName + " from " + url)
