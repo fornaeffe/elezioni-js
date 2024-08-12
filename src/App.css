@@ -1,0 +1,23 @@
+.titolo-iniziale {
+  font-size: xx-large;
+  font-weight: 700;
+  text-align: center;
+}
+
+.contenitore-iniziale {
+  width: fit-content;
+  margin: auto;
+}
+
+.barra-superiore {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.titolo-superiore {
+  font-size: x-large;
+  font-weight: 700;
+}
+

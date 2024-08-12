@@ -3,6 +3,7 @@ import { Elezione, elezioni } from "./globals"
 import ListItem from "@mui/material/ListItem"
 import ListItemButton from "@mui/material/ListItemButton"
 import ListItemText from "@mui/material/ListItemText"
+import Button from "@mui/material/Button"
 
 export function ScegliElezione(props : {
     cambiaElezione : (key : Elezione) => void
@@ -16,4 +17,14 @@ export function ScegliElezione(props : {
     return <List>
         {lista}
     </List>
+}
+
+export function BottoneCambiaElezione(props : {
+    cambiaElezione : (key : Elezione) => void
+}) {
+    return <Button 
+        onClick={() => props.cambiaElezione(null)}
+    >
+        Cambia elezione
+    </Button>
 }

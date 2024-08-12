@@ -1,17 +1,31 @@
 import './App.css'
-import { ScegliElezione } from './ScegliElezione'
+import { elezioni } from './globals';
+import { BottoneCambiaElezione, ScegliElezione } from './ScegliElezione'
 import { useMotore } from './stato'
-import Typography from '@mui/material/Typography';
 
 function App() {
   const motore = useMotore()
 
+  const contenutoPrincipale = motore.elezione ?
+    <> 
+      <div className='barra-superiore'>
+        <div className='titolo-superiore'>
+          Elezioni.ts
+        </div>
+        <div className='nome-elezione'>
+          {elezioni.get(motore.elezione)}
+        </div>
+        <BottoneCambiaElezione cambiaElezione={motore.cambiaElezione} />
+      </div>
+    </> :
+    <div className='contenitore-iniziale'> 
+      <div className='titolo-iniziale'>Elezioni.ts</div> 
+      <ScegliElezione cambiaElezione={motore.cambiaElezione} />
+    </div>
+
   return (
     <>
-      <Typography variant="h1">
-        Elezioni.ts
-      </Typography>
-      {motore.elezione ? '' : <ScegliElezione cambiaElezione={motore.cambiaElezione} />}
+      {contenutoPrincipale}
     </>
   )
 }
