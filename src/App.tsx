@@ -1,22 +1,17 @@
-import { useState } from 'react'
 import './App.css'
-import { Start } from './Start'
-import { EMR } from './EMR'
-
-export type StatoApp = 'start' | 'EMR'
+import { ScegliElezione } from './ScegliElezione'
+import { useMotore } from './stato'
+import Typography from '@mui/material/Typography';
 
 function App() {
-  const [stato, setStato] = useState('start' as StatoApp)
-  
-  const simulatori : Map<StatoApp, JSX.Element> = new Map([
-    ['start', <Start setStato={setStato} />],
-    ['EMR', <EMR setStato={setStato} />]
-  ])
+  const motore = useMotore()
 
   return (
     <>
-      <h1>Simulatore elettorale</h1>
-      {simulatori.get(stato)}
+      <Typography variant="h1">
+        Elezioni.ts
+      </Typography>
+      {motore.elezione ? '' : <ScegliElezione cambiaElezione={motore.cambiaElezione} />}
     </>
   )
 }
