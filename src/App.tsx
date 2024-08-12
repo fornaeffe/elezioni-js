@@ -1,5 +1,4 @@
 import './App.css'
-import { elezioni } from './globals';
 import { BottoneCambiaElezione, ScegliElezione } from './ScegliElezione'
 import { useMotore } from './stato'
 
@@ -13,7 +12,7 @@ function App() {
           Elezioni.ts
         </div>
         <div className='nome-elezione'>
-          {elezioni.get(motore.elezione)}
+          {motore.nome}
         </div>
         <BottoneCambiaElezione cambiaElezione={motore.cambiaElezione} />
       </div>
